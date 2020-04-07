@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="error">点击报错</button>
+	<button id="error1">点击报错1</button>
+	<button id="error2">点击报错2</button>
+	<button id="error3">点击报错3</button>
+	<button id="error4">点击报错4</button>
+	<script src="http://cdn.bootcss.com/jquery/2.2.3/jquery.slim.js"></script>
+	<script src="dist/hunter.min.js"></script>
+	<script>
+		window.__hunter = '123456';
+		var error_report = new hunter({
+		    url: 'http://192.168.19.201:9001/api/error.gif',
+		    delay: 1000
+		});
+		$('#error').click(function() {
+			console.log(aaa)
+		})
+		$('#error1').click(function() {
+			console.log(bbbb)
+		})
+		$('#error2').click(function() {
+			console.log(ccc)
+		})
+
+		var check = function(num) {
+		  if (num < 700 || num > 200) {
+		    throw new RangeError('Parameter must be between ' + 700 + ' and ' + 200);
+		  }
+		};
+		$('#error3').click(function() {
+			check(500);
+		})
+
+		$('#error4').click(function() {
+			throw new TypeError('Hello', "someFile.js", 10);
+		})
+
+	</script>
+</body>
+</html>
